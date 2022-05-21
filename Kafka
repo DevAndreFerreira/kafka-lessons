@@ -1,0 +1,29 @@
+Iniciando Kafka: 
+	
+	Antes de iniciar o kafka devemos iniciar o zookepper:
+
+	Dentro da pasta principal do projeto: bin/zookeeper-server-start.sh config/zookeeper.properties
+			
+	Dentro da pasta principal do projeto: bin/kafka-server-start.sh config/server.properties
+
+Criando um tópico:
+	
+	Dentro da pasta principal do projeto:
+
+	bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic LOJA_NOVO_PEDIDO
+
+	Sendo que em –boostrap-server: informamos a porta, --replication-factor: fator de replicação, –partitions o número de partição e –topic: nome do tópico.
+
+Listando os tópicos existentes:
+
+	Dentro da pasta principal do projeto:
+	bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+	Sendo que em –bootstrap-server informamos o host.
+
+Consumindo de um tópico:
+
+	Dentro da pasta princi	pal do projeto:	
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO –from-beginning
+	
+	Sendo que: --from-beginning quer dizer: desde o começo dos registros.
+
