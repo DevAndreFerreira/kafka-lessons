@@ -22,8 +22,12 @@ Listando os tópicos existentes:
 
 Consumindo de um tópico:
 
-	Dentro da pasta princi	pal do projeto:	
-	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO –from-beginning
+	Dentro da pasta principal do projeto:	
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic ECOMMERCE_NEW_ORDER --from-beginning
 	
-	Sendo que: --from-beginning quer dizer: desde o começo dos registros.
+	Sendo que: --from-beginning quer dizer: desde o começo dos registros,
+	e ECOMMERCE... é o nome do tópico.
 
+Descrevendo um tópico:
+	Dentro da pasta princi	pal do projeto:	
+	bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe
