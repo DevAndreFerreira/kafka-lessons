@@ -29,5 +29,29 @@ Consumindo de um tópico:
 	e ECOMMERCE... é o nome do tópico.
 
 Descrevendo um tópico:
-	Dentro da pasta princi	pal do projeto:	
+	Dentro da pasta principal do projeto:	
 	bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe
+	
+Descobrindo o número de partições:
+	Dentro da pasta principal do projeto:
+	code config/server.properties 
+	Em seguida procurar por: num.partitions=
+	Observação: Podemos mudar a quantidade de partições dessa forma, porém essa alteração é válida somente para os novos tópicos.
+	
+Editando o número de partições de um tópico já existente:
+	Dentro da pasta principal do projeto:
+	/bin/kafka-topics.sh --alter --bootstrap-server localhost:9092 --topic ECOMMERCE_NEW_ORDER --partitions 3
+	
+Descrevendo todos os grupos de consumo:
+	Dentro da pasta principal do projeto:
+	bin/kafka-consumer-groups.sh --all-groups --bootstrap-server localhost:9092 --describe
+	
+	
+Anotações genéricas:
+
+Quando temos um groupo de consumo, estamos consumindo todas as mensagens desse grupo. Porém, a mensagem não vai para todos os membros do grupo, mas
+sim para um só membro. 
+As partições determinam a forma com que a mensagem é distruibuída, portanto não faz sentido que um grupo de consumo tenha mais membros do que o número
+de partições.
+Quem decide em qual partição a mensagem vai cair é a chave. Exemplo, se utilizarmos o ID do usuário como chave e essa chave for atômica, 
+então essa mensagem (A mensagem do ID do usuário que é ATÔMICA) vai sempre para a mesma partição. 
