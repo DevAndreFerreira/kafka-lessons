@@ -55,3 +55,11 @@ As partições determinam a forma com que a mensagem é distruibuída, portanto 
 de partições.
 Quem decide em qual partição a mensagem vai cair é a chave. Exemplo, se utilizarmos o ID do usuário como chave e essa chave for atômica, 
 então essa mensagem (A mensagem do ID do usuário que é ATÔMICA) vai sempre para a mesma partição. 
+
+Qual a importância das chavez na paralelização de tarefas?
+A chave é usada para distribuir a mensagem entre as partições existentes e consequentemente entre as instâncias de um serviço dentro 
+de um consumer group.
+
+
+
+
